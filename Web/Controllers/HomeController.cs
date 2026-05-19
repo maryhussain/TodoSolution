@@ -8,22 +8,16 @@ namespace NTierTodoApp.Controllers
     {
         private readonly TaskService taskService;
 
-        public HomeController(TaskService service)
-            {
-            taskService = service;
-        }
+        public HomeController(TaskService service) => taskService = service;
 
-        public IActionResult Index()
-            {
-            var tasks = taskService.GetTasks();
-            return View(tasks);
-        }
+        public IActionResult Index() => View(taskService.GetTasks());
+    
 
         [HttpPost]
         public IActionResult AddTask(string title)
             {
             if (!string.IsNullOrWhiteSpace(title))
-            taskService.AddTask(title);
+                taskService.AddTask(title);
             return RedirectToAction("Index");
         }
 
@@ -33,12 +27,23 @@ namespace NTierTodoApp.Controllers
             taskService.CompleteTask(id);
             return RedirectToAction("Index");
         }
+        // تنفيذ دالة تعديل عنوان المهمة 
+        [HttpPost]
+        public IActionResult EditTask(int id, string newTitle)
+        {
+            if (!string.IsNullOrWhiteSpace(newTitle))
+            {
+                taskService.EditTask(id, newTitle);
+            }
+            return RedirectToAction("Index");
+        } 
+
 
         // TODO: تنفيذ إجراء لحذف المهمة
         [HttpPost]
         public IActionResult DeleteTask(int id)
             {
-            // TODO: استدعاء دالة حذف المهمة في TaskService
+            taskService.DeleteTask(id);
             return RedirectToAction("Index");
         }
     }

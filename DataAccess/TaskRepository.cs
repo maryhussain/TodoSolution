@@ -25,12 +25,27 @@ namespace NTierTodoApp.DataAccess
             {
                 return tasks.FirstOrDefault(t => t.Id == id);
             }
-            
+
+            //تنفيذ دالة تعديل عنوان المهمة 
+            public void Edit(int id, string newTitle)
+            {
+                var task = GetById(id);
+                if (task != null && !string.IsNullOrWhiteSpace(newTitle))
+                {
+                    task.Title = newTitle.Trim();
+                }
+            }
+
+            public void Save() { }
+
             // TODO: تنفيذ دالة حذف المهمة
             public void Delete(int id)
-            {
-            // TODO: ابحث عن المهمة باستخدام id
-            // TODO: إذا كانت المهمة موجودة، قم بإزالتها من القائمة
-            }
+            {        
+                var task = GetById(id);
+                if (task != null)
+                {
+                    tasks.Remove(task);
+                }
         }
     }
+}

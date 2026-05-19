@@ -35,10 +35,21 @@ namespace NTierTodoApp.Business
             task.IsComplete = true;
         }
 
+        
+        // تعديل عنوان مهمة 
+        public void EditTask(int id, string newTitle)
+        {
+            var task = repository.GetById(id);
+            if (task != null && !string.IsNullOrWhiteSpace(newTitle))
+            {
+                task.Title = newTitle.Trim();
+            }
+        }
+
         // TODO: تنفيذ دالة حذفالمهمة
         public void DeleteTask(int id)
         {
-            // TODO: استدعاء دالة الحذف في طبقة DataAccess
+            repository.Delete(id);
         }
     }
 }

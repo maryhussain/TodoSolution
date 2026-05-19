@@ -101,3 +101,4 @@ C:\Users\DELL\my_projects\TodoSolution\Web\obj\Debug\net10.0\refint\Web.dll
 C:\Users\DELL\my_projects\TodoSolution\Web\obj\Debug\net10.0\Web.pdb
 C:\Users\DELL\my_projects\TodoSolution\Web\obj\Debug\net10.0\Web.genruntimeconfig.cache
 C:\Users\DELL\my_projects\TodoSolution\Web\obj\Debug\net10.0\ref\Web.dll
+C:\Users\DELL\my_projects\TodoSolution\Web\obj\Debug\net10.0\Web.sourcelink.json
